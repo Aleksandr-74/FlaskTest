@@ -13,6 +13,20 @@ function list(){
     }   return arr;
 }
 
+//получение самой дорогой покупки
+function expensive(){
+    let arr = checkLists;
+    let  mElement = arr[0];
+    for(let element of arr){
+        if(mElement.valuable < element.valuable){
+            mElement = element;
+        }
+    }
+    return mElement.valuable;
+}
+
+
+
 //Формирования чека
 function check(){
     let arr = checkLists;
@@ -26,8 +40,10 @@ function check(){
             total += element.valuable;            
         } 
         counter += `Итого: ${total} едениц;<br>`;  
+        counter += expensive();
     return counter;
 }   
+
 
 
 
