@@ -1,9 +1,10 @@
-
-function audienceList(nam, places,faculty){
+class audienceList{
+    constructor(nam, places,faculty){
     this.nam = nam;
     this.places = places;
     this.faculty = faculty; 
-};
+    }
+}
 
 let technology = new audienceList('Большая аудитория', 20,  'технологический факультет');
 let legal = new audienceList('Маленькая аудитория', 10, 'Юридический факультет');
@@ -16,23 +17,19 @@ function conclusion(){
     return `${technology.nam}: ${technology.places} мест,  ${technology.faculty};<br>
             ${legal.nam}: ${legal.places} мест, ${legal.faculty};<br>
             ${building.nam}: ${building.places} мест, ${building.faculty};<hr>`;
-};
-
-document.write(`${conclusion(audience)}`);
+}
 
 //Вывод на экран аудиторий для указанного факультета
 function specifiedAudience(){
     let arr = audience;
-    let newElement = prompt ('Введите наименование аудитории: \nБольшая аудитория \nСредняя аудитория \nМаленькая аудитория');
+    let newElement = prompt('Введите наименование аудитории: \nБольшая аудитория \nСредняя аудитория \nМаленькая аудитория');
         for(let element of arr){
             if(newElement === element.nam){
-                return document.write(`${element.nam}: ${element.places} мест, ${element.faculty};<hr>`);
+                return `${element.nam}: ${element.places} мест, ${element.faculty};<hr>`;
             }    
         }
-    return  alert('Аудитория не найденна');
+    return 'Аудитория не найденна; <hr>';
 }
-
-
 
 // сортировка
 function compareFunction(a, b){
@@ -45,30 +42,36 @@ function compareFunction(a, b){
     return 0;
 }
 
-/*
-conclusionAudience(){
+//Вывод на экран только тех аудиторий, которые подходят
+function conclusionAudience(){
     let arr = audience;
-    let new Element = {
-        this.nam = prompt('Введите название аудитории');
-        this.places = prompt('Введите количество мест');
-        this.faculty = prompt('Введите название факультета');
-    }
-
-    for(let i=0; i < 3; ++i){
-         = 
-        
-    }
-        
+    let nElement = new audienceList(
+        prompt('Введите название группы'),
+        prompt('Введите количество мест'),
+        prompt('Введите название факультета'),
+    )
+    for(let element of arr){
+        if(element.faculty === nElement.faculty && element.places > nElement.places){
+            return `${element.nam}: ${element.places} мест, ${element.faculty};<hr>`;     
+        }
+    }    
+    return 'Нет подходящих аудиторий;<hr>';
 }
 
-*/
-
-console.table(audience);
-
+document.write(`${conclusion(audience)}`);
+document.write(`${specifiedAudience(audience)}`);
+document.write(`${conclusionAudience(audience)}`);
 const sortAudience = [...audience].sort(compareFunction);// сортированный массив
-
-console.log(specifiedAudience(audience));
+// document.write(`${conclusion(sortAudience)}`);
 console.table(sortAudience);
+
+
+// console.table(audience);
+
+
+
+// console.log(specifiedAudience(audience));
+// ;
 
 
 
