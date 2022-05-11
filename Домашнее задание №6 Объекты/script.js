@@ -1,4 +1,4 @@
-function auto(brand, year, model, averageSpeed){
+function Auto(brand, year, model, averageSpeed){
     this.brand = brand;
     this.model = model;
     this.year = year;
@@ -21,9 +21,6 @@ function auto(brand, year, model, averageSpeed){
     }
 }
 
-
-
-
-let BMW = new auto('BMW', 2015, 5, 90);
+let BMW = new Auto('BMW', 2015, 5, 90);
 document.write(`${BMW.getInfo()}`);
 document.write(`${BMW.averageTime()}`);
