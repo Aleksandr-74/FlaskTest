@@ -4,7 +4,17 @@ class Style{
         this.name = name;
         this.meaning = meaning;
     }
+     
 }
+
+
+
+
+let color = new Style ('color', 'green');
+let font = new Style ('font-size', '20px');
+let underline = new Style('text-decoration', 'underline');
+let objectStyle = [color, font, underline];
+
 
 function styles(){
     return `<style> p{
@@ -14,9 +24,5 @@ function styles(){
         }</style>`;
 };
 
-let color = new Style ('color', 'green');
-let font = new Style ('font-size' , 20);
-let underline = new Style('text-decoration', 'underline');
-let objectStyle = [color, font, underline];
 
-document.write(`<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> ${styles(objectStyle)}`);
+document.write(`<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> ${styles()}`);
