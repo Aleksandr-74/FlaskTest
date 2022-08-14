@@ -18,19 +18,15 @@ with open('B:\git\pythonProjectNew\ФАЙЛ\Crimes.csv', 'r', newline='') as csv
                 return s
 
     def getMaxList(s):
-        frequency = {}
-        total = 0
+        m = 0
         x = ''
         for i in s:
-            if i not in frequency:
-                frequency.update({i: 1})
-            else:
-                frequency.update({i: frequency[i] + 1})
-        for key, value in frequency.items():
-            if value > total:
-                total = value
-                x = key
+            a = s.count(i)
+            if s.count(i) > m:
+                x = i
+                m = s.count(i)
         print(x)
+
 
     def primaryTypes(reader):
         for row in reader:
