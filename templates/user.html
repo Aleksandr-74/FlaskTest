@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row_list ">
+    <input id="submit" name="name" type="submit" value="Имя">
+    <input id="submit" name="surname" type="submit" value="Фамилия">
+    <input id="submit" name="email" type="submit" value="Почта">
+</div>
+
+{% for user in listUser %}
+ <div class="row_list ">
+     <p>{{ user.name }}</p>
+     <p>{{ user.surname }}</p>
+     <p>{{ user.email }}</p>
+</div>
+{% endfor %}
+{% endblock %}
+
+
+
+
+<!--operation= {name: lambda user: user.name,-->
+<!--        surname: lambda user: user.surname,-->
+<!--        email: lambda user: user.email}-->
+
+<!--listUser.sort(operation[key], )-->
+
+<!--reverse if True if reverse else reverse if False-->
+<!--condition_if_true if condition else condition_if_false-->

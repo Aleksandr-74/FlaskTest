@@ -1,10 +1,12 @@
 class User():
-    def __init__(self, email, password):
-        self._email = email
-        self._password = password
+    def __init__(self, name, surname, email, password):
+        self.name = name
+        self.surname = surname
+        self.email = email
+        self.password = password
 
     def out(self):
-        return {"email": self._email, "password": self._password}
+        return {'name': {self.name}, 'surname': {self.surname}, 'email': {self.email}, 'password': {self.password}}
 
     def __str__(self):
-        return f"email: {self._email}, password: {self._password}"
+        return f"name: {self.name}; surname: {self.surname}; email: {self.email}; password: {self.password}"

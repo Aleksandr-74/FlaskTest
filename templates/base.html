@@ -9,19 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto+Slab&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img alt="" class="background" src="\static\img\1-55.jpg">
+    <img alt="" class="background" src="\static\img\doroga_razmetka_pasmurno_124093_1280x720.jpg">
     <header>
         <div class="contener">
             <div class="logo_header">
-                <a href="/citi"><h3 class="logo">Города Росси</h3></a>
+                <a href="/citi"><h3 class="logo">Главная</h3></a>
             </div>
             <ul class="menu">
-                <li><a href="/citi/small">Малые города</a></li>
-                <li><a href="/citi/medium">Средние города</a></li>
-                <li><a href="/citi/big_cities">Большие города</a></li>
-                <li><a href="/citi/bigСities">Крупные города</a></li>
-                <li><a href="/citi/largest">Крупнейшие города</a></li>
-                <li><a href="/citi/millionaires">Города миллионеры</a></li>
+                <li><a href="/forms">Регистрация</a></li>
+                <li><a href="/user">Пользователи</a></li>
+                <li><a href="/citi/big_cities">Наши проекты</a></li>
             </ul>
         </div>
     </header>
@@ -29,7 +26,6 @@
         {% block content%}{% endblock %}
         {% block forma%}{% endblock %}
     </div>
-
     {% block scripts %}
         <script>
             document.querySelector('ul a[href="' + location.pathname + '"]').className = 'activ';
