@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row_list ">
-    <input id="submit" name="name" type="submit" value="Имя">
-    <input id="submit" name="surname" type="submit" value="Фамилия">
-    <input id="submit" name="email" type="submit" value="Почта">
+<div class="row_block">
+    <a href="/user?sorting=name" class="btn"><input class="btn" type="button" value="Имя"></a>
+    <a href="/user?sorting=surname" class="btn"><input class="btn" type="button" value="Фамилия"></a>
+    <a href="/user?sorting=email" class="btn"><input class="btn" type="button" value="Почта"></a>
 </div>
 
 {% for user in listUser %}
- <div class="row_list ">
+ <div class="row_block">
      <p>{{ user.name }}</p>
      <p>{{ user.surname }}</p>
      <p>{{ user.email }}</p>

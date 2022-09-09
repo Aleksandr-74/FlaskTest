@@ -6,18 +6,17 @@ from wtforms.validators import DataRequired, Email, InputRequired, Length
 from DataBase import DataBase
 from User import User
 
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'Yo'
-
 listUser = []
+
 
 class MessageForm(FlaskForm):
     name = StringField("name: ", validators=[DataRequired(), Length(min=1, max=30, message=None)])
     surname = StringField("surname: ", validators=[DataRequired(), Length(min=1, max=30, message=None)])
-    email = StringField("email: ", validators=[])
+    email = StringField("email: ", validators=[Email()])
     password = StringField("password: ", validators=[InputRequired(), Length(max=30, message=None)])
-    submit = SubmitField("submit")
+    submit = SubmitField()
 
 
 @app.route("/forms", methods=['GET', 'POST'])
@@ -32,43 +31,45 @@ def forms():
         listUser.append(user)
         print(len(listUser))
         return redirect(url_for('forms'))
-
     return render_template("form.html", form=form, User=User)
 
 
-
-
 @app.route("/")
-@app.route("/citi", methods=['GET', 'POST'])
+@app.route("/citi")
 def citis():
-    if request.method == 'POST':
-         with open('B:\git\Test\\flask\static\Base.csv', mode='r+', encoding='UTF-8', newline='') as csv:
-            email = request.form.get('email')
-            password = request.form.get('password')
-            if email != "" in password != "":
-                user = User(email, password)
-                print(user)
-                uz = DataBase(csv, user)
-                if uz.authentication():
-                    outs = f'user:  {email} авторизировался'
-                    return render_template('index.html', outs=outs,  user=user, email=email)
-                outs = f"user: {email} добавден!"
-                uz.newUser()
-                return render_template('index.html', outs=outs)
-            outs = "Введите данные!"
-            return render_template('index.html', outs=outs)
+    # if request.method == 'POST':
+    #     with open('B:\git\Test\\flask\static\Base.csv', mode='r+', encoding='UTF-8', newline='') as csv:
+    #         email = request.form.get('email')
+    #         password = request.form.get('password')
+    #         if email != "" in password != "":
+    #             user = User(email, password)
+    #             print(user)
+    #             uz = DataBase(csv, user)
+    #             if uz.authentication():
+    #                 outs = f'user:  {email} авторизировался'
+    #                 return render_template('index.html', outs=outs, user=user, email=email)
+    #             outs = f"user: {email} добавден!"
+    #             uz.newUser()
+    #             return render_template('index.html', outs=outs)
+    #         outs = "Введите данные!"
+    #         return render_template('index.html', outs=outs)
     return render_template('index.html')
 
 
-@app.route('/user', methods=['GET', 'POST'])
+@app.route('/user')
 def user():
-    if request.method == 'POST':
-       pass
+    sorting = request.args.get('sorting')
+    if sorting == 'name':
+            return render_template("user.html", listUser=sorted(listUser, key=lambda user: user.name))
 
+    elif sorting == 'surname':
+            return render_template("user.html", listUser=sorted(listUser, key=lambda user: user.surname))
 
+    elif sorting == 'email':
+            return render_template("user.html", listUser=sorted(listUser, key=lambda user: user.email))
 
-    return render_template("user.html", listUser=listUser)
-
+    else:
+        return render_template("user.html", listUser=listUser)
 
 
 @app.route('/citi/small')
